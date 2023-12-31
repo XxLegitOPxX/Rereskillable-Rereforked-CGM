@@ -4,6 +4,7 @@ import floris0106.rereskillablerereforked.client.Keybind;
 import floris0106.rereskillablerereforked.client.Overlay;
 import floris0106.rereskillablerereforked.client.screen.InventoryTabs;
 import floris0106.rereskillablerereforked.client.Tooltip;
+import floris0106.rereskillablerereforked.client.EventHandlerClient;
 import floris0106.rereskillablerereforked.common.Config;
 import floris0106.rereskillablerereforked.common.compat.CuriosCompat;
 import floris0106.rereskillablerereforked.common.EventHandler;
@@ -64,5 +65,6 @@ public class RereskillableRereforked
         MinecraftForge.EVENT_BUS.register(new Tooltip());
         MinecraftForge.EVENT_BUS.register(new Keybind());
         MinecraftForge.EVENT_BUS.register(new Overlay());
+        MinecraftForge.EVENT_BUS.register(new EventHandlerClient());
     }
 }
