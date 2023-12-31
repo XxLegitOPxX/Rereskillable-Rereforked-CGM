@@ -31,6 +31,8 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.client.event.InputEvent;
+import net.minecraft.client.Minecraft;
 
 public class EventHandler
 {
@@ -87,6 +89,26 @@ public class EventHandler
             {
                 event.setCanceled(true);
             }
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public void onMouseClick(InputEvent.ClickInputEvent event)
+    {
+        if(event.isCanceled())
+            return;
+
+        Minecraft mc = Minecraft.getInstance();
+        Player player = mc.player;
+        if(player == null)
+            return;
+
+        ItemStack item = player.getMainHandItem();
+        SkillModel model = SkillModel.get(player);
+
+        if (!player.isCreative() && !model.canUseItem(player, item))
+        {
+            event.setCanceled(true);
         }
     }
     
